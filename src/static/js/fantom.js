@@ -69,7 +69,7 @@ const main = async() => {
         "https://www.liquiddriver.finance"
       ],
       [
-        "Standard",
+        "Standard *",
         `<a href='standard'>Various</a>`,
         "STRD",
         "https://strd.finance"
@@ -86,6 +86,36 @@ const main = async() => {
         "SEED",
         "https://thegreenhouse.finance"
       ],
+      [
+        "Stake Steak",
+        `<a href='steak'>Various</a>`,
+        "STEAK",
+        "https://stakesteak.com"
+      ],
+      [
+        "Frankenstein",
+        `<a href='frankenstein'>Various</a>`,
+        "FRANK",
+        "https://frankenstein.finance"
+      ],
+      [
+        "Waka",
+        `<a href='waka'>Various</a>`,
+        "WAKA",
+        "https://waka.finance"
+      ],
+      [
+        "Elk",
+        `<a href='elk'>Various</a>`,
+        "ELK",
+        "https://app.elk.finance"
+      ],
+      [
+        "Paintswap",
+        `<a href='paintswap'>Various</a>`,
+        "BRUSH",
+        "https://paintswap.finance"
+      ]
     ]
   }
 

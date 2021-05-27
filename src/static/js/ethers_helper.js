@@ -49,6 +49,10 @@ const init_wallet = async function (callback) {
   start(callback);
 }
 
+function clearLocalStorage() {
+  localStorage.clear()
+}
+
 async function init_ethers() {
 
   const App = {}
@@ -58,7 +62,7 @@ async function init_ethers() {
   try {
     // If no injected web3 instance is detected, fall back to backup node
     //App.provider = new ethers.providers.JsonRpcProvider(atob(window.ETHEREUM_NODE_URL))
-    App.provider = new ethers.providers.JsonRpcProvider("http://192.168.1.164:8102")
+    App.provider = new ethers.providers.JsonRpcProvider("https://rpcapi.fantom.network/")
     isMetaMaskInstalled = false
 
     //sleep(10)
@@ -257,12 +261,15 @@ const _print_bold = function(message) {
   }
 }
 
-const _print_link = function(message, onclickFunction, uuid = ID()) {
+const _print_link = function(message, onclickFunction, uuid = ID(), add_carriage = true) {
   if (!logger) {
     logger = document.getElementById('log')
   }
 
-  logger.innerHTML += '<a href="#" id=' + uuid + '>' + message + '</a><br />'
+  logger.innerHTML += '<a href="#" id=' + uuid + '>' + message + '</a>'
+  if (add_carriage) {
+    logger.innerHTML += '<br />'
+  }
 
   $(document).on('click', '#' + uuid, function() {
     console.log('clicked')
@@ -1381,6 +1388,7 @@ function getUniPrices(tokens, prices, pool)
   else if (pool.symbol.includes("PLP")) stakeTokenTicker += " Pure Swap LP";
   else if (pool.symbol.includes("Field-LP")) stakeTokenTicker += " Yield Fields LP";
   else if (pool.symbol.includes("UPT")) stakeTokenTicker += " Unic Swap LP";
+  else if (pool.symbol.includes("ELP")) stakeTokenTicker += " ELK LP";
   else stakeTokenTicker += " Uni LP";
   return {
       t0: t0,
@@ -1422,6 +1430,7 @@ function getUniPrices(tokens, prices, pool)
               pool.symbol.includes("SPIRIT") ?  `https://swap.spiritswap.finance/#/swap` :
               pool.symbol.includes("spLP") ?  `https://info.spookyswap.finance/pair/${pool.address}` :
               pool.symbol.includes("Lv1") ?  `https://info.steakhouse.finance/pair/${pool.address}` :
+              pool.symbol.includes("ELP") ?  `https://app.elk.finance/#/swap` :
               pool.symbol.includes("PLP") ?  `https://exchange.pureswap.finance/#/swap` :
               pool.symbol.includes("BLP") ?  `https://info.bakeryswap.org/#/pair/${pool.address}` :
               pool.symbol.includes("Field-LP") ?  `https://exchange.yieldfields.finance/#/swap` :
@@ -1458,6 +1467,11 @@ function getUniPrices(tokens, prices, pool)
             `https://app.pangolin.exchange/#/add/${t0address}/${t1address}`,
             `https://app.pangolin.exchange/#/remove/${t0address}/${t1address}`,
             `https://app.pangolin.exchange/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
+          ] :
+          pool.symbol.includes("ELP") ? [
+            `https://app.elk.finance/#/add/${t0address}/${t1address}`,
+            `hhttps://app.elk.finance/#/remove/${t0address}/${t1address}`,
+            `https://app.elk.finance/#/swap?inputCurrency=${t0address}&outputCurrency=${t1address}`
           ] :
           pool.symbol.includes("CS-LP") ? [
             `https://app.coinswap.space/#/add/${t0address}/${t1address}`,
@@ -1995,7 +2009,7 @@ function printChefPool(App, chefAbi, chefAddr, prices, tokens, poolInfo, poolInd
                        totalAllocPoints, rewardsPerWeek, rewardTokenTicker, rewardTokenAddress,
                        pendingRewardsFunction, fixedDecimals, claimFunction, chain="eth", depositFee=0, withdrawFee=0) {
   fixedDecimals = fixedDecimals ?? 2;
-  const sp = (poolInfo.stakedToken == null) ? null : getPoolPrices(tokens, prices, poolInfo.stakedToken);
+  const sp = (poolInfo.stakedToken == null) ? null : getPoolPrices(tokens, prices, poolInfo.stakedToken, chain);
   var poolRewardsPerWeek = poolInfo.allocPoints / totalAllocPoints * rewardsPerWeek;
   if (poolRewardsPerWeek == 0 && rewardsPerWeek != 0) return;
   const userStaked = poolInfo.userLPStaked ?? poolInfo.userStaked;

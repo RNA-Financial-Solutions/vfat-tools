@@ -11,7 +11,7 @@ const main = async() => {
       ["Pancake             ", `<a href="pancake"       >Various</a>`,"CAKE          ","https://pancakeswap.finance"],
       ["Apeswap             ", `<a href="apeswap"       >Various</a>`,"BANANA        ","https://apeswap.finance"],
       ["Autofarm            ", `<a href="autofarm"      >Various</a>`,"AUTOFARM      ","https://autofarm.network"],
-      ["Bake *              ", `<a href="bake"          >Various</a>`,"BAKE          ","https://www.bakeryswap.org"],
+      ["Bake                ", `<a href="bake"          >Various</a>`,"BAKE          ","https://www.bakeryswap.org"],
       ["Brew                ", `<a href="brew"          >Various</a>`,"BREW          ","https://cafeswap.finance"],
       ["Donut               ", `<a href="donut"         >Various</a>`,"DONUT         ","https://donutdefi.com"],
       ["Pumpkin             ", `<a href="pumpkin"       >Various</a>`,"PUMP          ","https://pumpkindefi.org"],
@@ -60,7 +60,7 @@ const main = async() => {
       ["Fed                 ", `<a href="fed"           >Various</a>`,"FED           ","https://fedswap.finance"],
       ["Coral               ", `<a href="coral"         >Various</a>`,"CRL           ","https://coralfarm.finance"],
       ["Duck Money          ", `<a href="duckmoney"     >Various</a>`,"DUCK          ","https://duck.money"],
-      ["Iron Finance *      ", `<a href="iron"          >Various</a>`,"STEEL         ","https://iron.finance"],
+      ["Iron Finance        ", `<a href="iron"          >Various</a>`,"STEEL         ","https://iron.finance"],
       ["BVaults             ", `<a href="bvaults"       >Various</a>`,"Various  ","https://bvaults.fi"],
       ["MidasGold           ", `<a href="midasgold"     >Various</a>`,"Various  ","https://midasgold.network"],
       ["Nerve               ", `<a href="nerve"         >Various</a>`,"NRV           ","https://nerve.fi"],
@@ -206,13 +206,13 @@ const main = async() => {
       ["Caramel             ", `<a href="caramel"       >Various</a>`,"CARAMEL       ","https://caramelswap.finance"],
       ["Plumcake            ", `<a href="plumcake"      >Various</a>`,"PLUM          ","https://plumcake.finance"],
       ["Wsbdapp             ", `<a href="wsb"           >Various</a>`,"WSB           ","https://farm.wsbdapp.com"],
-      ["Feeder *            ", `<a href="feeder"        >Various</a>`,"FEED          ","https://app.feeder.finance"],
+      ["Feeder              ", `<a href="feeder"        >Various</a>`,"FEED          ","https://app.feeder.finance"],
       ["Yolodraw            ", `<a href="yolodraw"      >Various</a>`,"YoloDraw      ","https://yolo-token.com"],
       ["Jaguar              ", `<a href="jaguar"        >Various</a>`,"JAGUAR        ","https://jaguarswap.com"],
-      ["Zombie              ", `<a href="zombie"        >Various</a>`,"ZOMBIE        ","https://zombie-farm.com"],
+      ["Zombie *            ", `<a href="zombie"        >Various</a>`,"Various       ","https://zombie-farm.com"],
       ["Degen               ", `<a href="degen"         >Various</a>`,"DGNZ          ","https://degentoken.finance"],
       ["DegenCompound       ", `<a href="degencomp"     >Various</a>`,"aDGNZ         ","https://degentoken.finance"],
-      ["Parthenon Epsilon   ", `<a href="parthenon_epsilon">Various</a>`,"EPSILON       ","https://epsilon.parthenon.finance"],
+      ["Parthenon Epsilon   ", `<a href="parthenon_epsilon">Various</a>`,"EPSILON    ","https://epsilon.parthenon.finance"],
       ["Snake               ", `<a href="snake"         >Various</a>`,"SNKE          ","https://snakedefi.com"],
       ["Tap                 ", `<a href="tap"           >Various</a>`,"TAPS          ","https://tapswap.finance"],
       ["Aot                 ", `<a href="aot"           >Various</a>`,"AOT           ","https://www.aotfinance.com"],
@@ -225,7 +225,7 @@ const main = async() => {
       ["Sukiyaki            ", `<a href="sukiyaki"      >Various</a>`,"SUKI          ","https://sukiyakiswap.finance"],
       ["PrivacySwap         ", `<a href="privacy"       >Various</a>`,"PRV           ","https://privacyswap.finance"],
       ["Sponge              ", `<a href="sponge"        >Various</a>`,"SPG/SOAK/STEAM","https://app.sponge.finance"],
-      ["Blue - PlanetFinance", `<a href="blue_planetfinance">Various</a>`,"AQUA     "    ,"https://blue.planetfinance.io"],
+      ["Blue - PlanetFinance", `<a href="blue_planetfinance">Various</a>`,"AQUA      ","https://blue.planetfinance.io"],
       ["Fanatics            ", `<a href="fanatics"      >Various</a>`,"GOAL          ","https://fanaticsfinance.com"],
       ["Parthenon Zeta      ", `<a href="parthenon_zeta">Various</a>`,"ZETA          ","https://zeta.parthenon.finance"],
       ["Taiyaki             ", `<a href="taiyaki"       >Various</a>`,"TAI           ","https://taiyakiswap.finance"],
@@ -281,10 +281,17 @@ const main = async() => {
       ["Frankenstein        ", `<a href="frankenstein"  >Various</a>`,"FRANK         ","https://frankenstein.finance"],
       ["Cashcow             ", `<a href="cashcow"       >Various</a>`,"CCDI          ","https://cashcowswap.org"],
       ["Tiger Finance       ", `<a href="tiger_defi"    >Various</a>`,"TIG           ","https://www.tigerfinancedefi.com"],
-      ["Tinville            ", `<a href="tinville"      >Various</a>`,"TINvS         ","https://farms.tinville.finance"]
+      ["Tinville            ", `<a href="tinville"      >Various</a>`,"TINvS         ","https://farms.tinville.finance"],
+      ["Matisse             ", `<a href="matisse"       >Various</a>`,"Nu            ","https://app.matisse.finance"],
+      ["Cougar              ", `<a href="cougar"        >Various</a>`,"CGS           ","https://cougarswap.io"],
+      ["Fluity *            ", `<a href="fluity"        >Various</a>`,"FLTY          ","https://fluity.finance"],
+      ["Parthenon Iota      ", `<a href="parthenon_iota">Various</a>`,"IOTA          ","https://iota.parthenon.finance"],
+      ["Croco               ", `<a href="croco"         >Various</a>`,"CROCO         ","https://crocofinance.club"],
+      ["Cinnamonroll        ", `<a href="cinnamonroll"  >Various</a>`,"CNR           ","https://cinnamonroll.fi"],
+      ["Biswap              ", `<a href="biswap"        >Various</a>`,"BSW           ","https://biswap.org"]
     ]
   }
-  
+
   let table = new AsciiTable().fromJSON(tableData);
   document.getElementById('log').innerHTML += table + '<br />';
   hideLoading();
