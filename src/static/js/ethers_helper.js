@@ -45,35 +45,8 @@ const pageNetwork = function() {
 }
 
 const init_wallet = async function (callback) {
-
-  let targetNetwork = pageNetwork()
-
-  if (window.web3Modal.cachedProvider) {
-    await connectWallet(() => {})
-  }
-
-  if (walletProvider) {
-
-    let provider = new ethers.providers.Web3Provider(walletProvider)
-    let connectedNetwork = await provider.getNetwork()
-    let targetNetworkId = parseInt(targetNetwork.chainId, 16)
-
-    if (connectedNetwork.chainId === targetNetworkId) {
-      _print_link("[CHANGE WALLET]", changeWallet, "connect_wallet_button");
-      start(callback);
-    } else {
-      _print(`You are connected to ${networkNameFromId(connectedNetwork.chainId)}, please switch to ${targetNetwork.chainName} network`)
-      if (window.ethereum && targetNetwork.chainId !== '0x1') {
-        _print('')
-        _print_link("[SWITCH NETWORK]", () => switchNetwork(targetNetwork), "connect_wallet_button")
-      }
-      hideLoading()
-    }
-  } else {
-    _print_link("[CONNECT WALLET]", () => connectWallet(callback), "connect_wallet_button");
-    hideLoading()
-  }
-  _print('')
+  //hideLoading()
+  start(callback);
 }
 
 async function init_ethers() {
@@ -83,33 +56,17 @@ async function init_ethers() {
   let isMetaMaskInstalled = true
 
   try {
-
-    // Modern dapp browsers...
-    if (walletProvider) {
-      App.web3Provider = walletProvider
-      App.provider = new ethers.providers.Web3Provider(walletProvider)
-      try {
-        // Request account access
-        const accounts = await walletProvider.request({ method: 'eth_requestAccounts' })
-        App.YOUR_ADDRESS = accounts[0];
-      } catch (error) {
-        // User denied account access...
-        console.error('User denied account access')
-      }
-    }
     // If no injected web3 instance is detected, fall back to backup node
-    else {
-      App.provider = new ethers.providers.JsonRpcProvider(atob(window.ETHEREUM_NODE_URL))
-      isMetaMaskInstalled = false
-      _print(
-        "You don't have MetaMask installed! Falling back to backup node...\n (will likely to fail. Please install MetaMask extension).\n"
-      )
-      sleep(10)
-    }
+    //App.provider = new ethers.providers.JsonRpcProvider(atob(window.ETHEREUM_NODE_URL))
+    App.provider = new ethers.providers.JsonRpcProvider("http://192.168.1.164:8102")
+    isMetaMaskInstalled = false
+
+    //sleep(10)
     App.ethcallProvider = new ethcall.Provider();
     await App.ethcallProvider.init(App.provider);
 
-    let addr = getUrlParameter('addr')
+    //let addr = getUrlParameter('addr')
+    let addr = '0x97Cb5b90211556F8F0562Da23d07b74dAA11CEf6';
 
     //resolve ENS domain if possible
     if(typeof addr !== "undefined")
@@ -139,7 +96,7 @@ async function init_ethers() {
     }
 
   } catch (e) {
-
+    _print(e)
   }
 
   if (!App.YOUR_ADDRESS || !ethers.utils.isAddress(App.YOUR_ADDRESS)) {
@@ -166,6 +123,8 @@ const changeWallet = async function() {
 }
 
 const connectWallet = async function(callback) {
+  hideLoading();
+  return
   try {
     walletProvider = await window.web3Modal.connect()
 
